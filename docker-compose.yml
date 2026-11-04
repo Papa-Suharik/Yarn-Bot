@@ -1,0 +1,50 @@
+services:
+  yarnbot:
+    image: papasuharik/yarnbot:latest
+
+    container_name: yarnbot
+
+    restart: unless-stopped
+
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+    environment:
+      Telegram__Token: ${BOT_TOKEN}
+      Telegram__AdminChatId: ${BOT_ADMIN_CHAT_ID}
+      OneC__Login: ${ONEC_LOGIN}
+      OneC__Password: ${ONEC_PASSWORD}
+      OneC__BaseUrl: ${ONEC_BASE_URL}
+      OneC__ByPhoneEndpoint: ${ONEC_BYPHONE_ENDPOINT}
+      OneC_ByIdEndpoint: ${ONEC_BYID_ENDPOINT}
+      OneC_ExpPromosEndpoint: ${ONEC_EXPPROMOS_ENDPOINT}
+      ConnectionStrings__DefaultConnection: Host=${DB_HOST};Port=${DB_PORT};Database=${DB_NAME};Username=${DB_USER};Password=${DB_PASSWORD}
+
+  postgres:
+    image: postgres:17
+
+    container_name: yarnbot-postgres
+
+    restart: unless-stopped
+
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USER}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+
+    environment:
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+
+    ports:
+      - "5432:5432"
+
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
