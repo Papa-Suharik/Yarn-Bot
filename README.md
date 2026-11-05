@@ -24,3 +24,5 @@ It communicated with an external ERP system through REST API, retrives customer 
 
 ## Architecture
 
+![image alt](Images/Architecture.png)
+
