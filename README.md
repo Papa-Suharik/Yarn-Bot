@@ -34,7 +34,7 @@ It communicated with an external ERP system through REST API, retrives customer 
 | Framework | .NET Worker Service |
 | Database | PostgreSQL |
 | ORM | Entity Framework Core |
-| Integration | REST API, Telegram Bot API |
+| Integration | Telegram Bot API |
 | Logging | Serilog |
 | Deployment | Docker, Docker Compose |
 
