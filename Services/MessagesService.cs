@@ -151,11 +151,10 @@ public class MessagesService
             var timeLeft = promocode.ExpiresAt - DateTime.UtcNow;
             codes += $"""
             <b>
-            <blockquote>Промокод: <code>{promocode.Code}</code>
+            <blockquote>Промокод: <code>{promocode.Code}</code></blockquote>
             {promocode.Description}
             Діє до: {expiresAt:dd.MM.yyyy}
             Залишилось: {timeLeft.Days} дн. {timeLeft.Hours} год.
-            </blockquote>
             </b>
             """;
         }

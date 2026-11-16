@@ -17,8 +17,8 @@ services:
       OneC__Password: ${ONEC_PASSWORD}
       OneC__BaseUrl: ${ONEC_BASE_URL}
       OneC__ByPhoneEndpoint: ${ONEC_BYPHONE_ENDPOINT}
-      OneC_ByIdEndpoint: ${ONEC_BYID_ENDPOINT}
-      OneC_ExpPromosEndpoint: ${ONEC_EXPPROMOS_ENDPOINT}
+      OneC__ByIdEndpoint: ${ONEC_BYID_ENDPOINT}
+      OneC__ExpPromosEndpoint: ${ONEC_EXPPROMOS_ENDPOINT}
       ConnectionStrings__DefaultConnection: Host=${DB_HOST};Port=${DB_PORT};Database=${DB_NAME};Username=${DB_USER};Password=${DB_PASSWORD}
 
   postgres:
